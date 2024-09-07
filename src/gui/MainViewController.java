@@ -16,7 +16,11 @@ import java.util.function.Consumer;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import model.services.DepartmentService;
+import model.services.SellerService;
 
+/*
+this is the class that represents the logical operations of the mainView of the program
+ */
 public class MainViewController implements Initializable {
 
     @FXML
@@ -25,11 +29,17 @@ public class MainViewController implements Initializable {
     private MenuItem menuItemDepartment;
     @FXML
     private MenuItem menuItemAbout;
+//method that corresponds to the menu option that was treated to be a option on the tool bar of the app main view
 
     @FXML
     public void onMenuItemSellerAction() {
         System.out.println("onMenuItemSellerAction");
+        loadView("/gui/SellerList.fxml", (SellerListController controller) -> {
+            controller.setSellerService(new SellerService());
+            controller.updateTableView();
+        });
     }
+//method that corresponds to the menu option that was treated to be a option on the tool bar of the app main view
 
     @FXML
     public void onMenuItemDepartmentAction() {
@@ -38,6 +48,7 @@ public class MainViewController implements Initializable {
             controller.updateTableView();
         });
     }
+//method that corresponds to the menu option that was treated to be a option on the tool bar of the app main view
 
     @FXML
     public void onMenuItemAboutAction() {
